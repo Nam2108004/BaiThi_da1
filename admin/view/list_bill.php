@@ -58,24 +58,41 @@
                                                     echo "Không tìm thấy phương thức thanh toán";
                                                 }  ?></td>
                                             <td><?php if ($bill['status'] == 0) {
-                                                    echo "<span class='badge badge-info'>Đơn hàng mới</span>";
+                                                    echo "<span class='badge badge-danger'>Đơn Hủy</span>";
                                                 } else if ($bill['status'] == 1) {
                                                     echo "<span class='badge badge-warning'>Đang xử lý</span>";
-                                                } else if ($bill['status'] == 2) {
+                                                } else if ($bill['status'] == 2 || $bill['status'] == 3) {
                                                     echo "<span class='badge badge-primary'>Đang giao hàng</span>";
-                                                } else if ($bill['status'] == 3) {
-                                                    echo "<span class='badge badge-success'>Đã giao hàng</span>";
                                                 } elseif ($bill['status'] == 4) {
-                                                    echo "<span class='badge badge-danger'>Đã hủy</span>";
-                                                } else {
-                                                    echo "Lỗi trạng thái";
+                                                    echo "<span class='badge badge-warning'>Chờ người mua xác nhận</span>";
+                                                } elseif ($bill['status'] == 5) {
+                                                    echo "<span class='badge badge-success'>Đã bán</span>";
                                                 } ?></td>
-                                            <td><span class="badge badge-dark"><?= $bill['order_date'] ?></span></td>
+                                             <td><span class="badge badge-dark"><?= $bill['order_date'] ?></span></td>
 
                                             <td class="text-center">
+                                                <?php if($bill['status'] == 0) : ?>
+                                                    <button type="button" class="btn btn-danger" disabled>Đã Hủy</button>
+
+                                                <?php endif; ?>
+                                                <?php if($bill['status'] == 1) : ?>
+                                                    <a href="?act=update_nhan_admin&id=<?=$bill['id_bill']?>" onclick="return confirm('Xác nhận đã chuyển cho đơn vị vận chuyển ?')"><button type="button" class="btn btn-success"> Xác nhận đơn</button></a>
+                                                    <a href="?act=deleted_bill_admin&id=<?=$bill['id_bill']?>" onclick="return confirm('Bạn muốn hủy đơn hàng này chứ ?')"><button type="button" class="btn btn-danger">Hủy Đơn</button></a>
+                                                <?php endif; ?>
+                                                <?php if($bill['status'] == 2) : ?>
+                                                    <a href="?act=update_giao_admin&id=<?=$bill['id_bill']?>" onclick="return confirm('Xác nhận đã chuyển cho đơn vị vận chuyển ?')"><button type="button" class="btn btn-success">Xác nhận giao hàng</button></a>
+                                                <?php endif; ?>
+                                                <?php if($bill['status'] == 3) : ?>
+                                                    <button type="button" class="btn btn-success" disabled>Đang giao</button>
+                                                <?php endif; ?>
+                                                <?php if($bill['status'] == 4) : ?>
+                                                    <button type="button" class="btn btn-success" disabled>Chờ người mua xác nhận</button>
+                                                <?php endif; ?>
+                                                <?php if($bill['status'] == 5) : ?>
+                                                    <button type="button" class="btn btn-success" disabled>Đã bán</button>
+                                                <?php endif; ?>
                                                 <a type="button" href="index.php?act=edit_bill&idbill=<?= $bill['id_bill'] ?>" class="btn btn-warning"><i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="index.php?act=billdetail&idbill=<?= $bill['id_bill'] ?>" class="btn btn-success"><i class="fa-solid fa-circle-info"></i> </a>
                                                 <!-- <button onClick="window.print()" class="btn btn-danger"><i class="fa-solid fa-print"></i></button> -->
                                             </td>
                                         </tr>

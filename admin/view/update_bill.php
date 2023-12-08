@@ -61,13 +61,13 @@
                             </div>
                             <div class="form-group mt-3">
                                 <label for="formGroupExampleInput" class="font-lb">Trạng thái</label>
-                                <select required class="form-control" name="status" id="">
-                                    <option value="0" <?= $status == 0 ? "selected" : "" ?>>Đơn hàng mới</option>
-                                    <option value="1" <?= $status == 1 ? "selected" : "" ?>>Đang xử lý</option>
-                                    <option value="2" <?= $status == 2 ? "selected" : "" ?>>Đang giao hàng</option>
-                                    <option value="3" <?= $status == 3 ? "selected" : "" ?>>Đã giao hàng</option>
-                                    <option value="4" <?= $status == 4 ? "selected" : "" ?>>Đã hủy</option>
-
+                                <select required class="form-control" name="status" id="" disabled>
+                                    <option value="0" <?= $status == 0 ? "selected" : "" ?>>Đã Hủy</option>
+                                    <option value="1" <?= $status == 1 ? "selected" : "" ?>>Chờ xác nhận</option>
+                                    <option value="2" <?= $status == 2 ? "selected" : "" ?>>Chờ xác nhận giao hàng</option>
+                                    <option value="3" <?= $status == 3 ? "selected" : "" ?>>Đang giao hàng</option>
+                                    <option value="4" <?= $status == 4 ? "selected" : "" ?>>Chờ người mua xác nhận </option>
+                                    <option value="5" <?= $status == 5 ? "selected" : "" ?>>Đã bán</option>
                                 </select>
                             </div>
 
