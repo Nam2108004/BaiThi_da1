@@ -11,7 +11,7 @@
  </div>
  <!--end phần active trang đang được hiển thị-->
  <article class="mt-3 container-sm">
-     <h5 class="alert alert-primary">Đặt hàng thành công! Cảm ơn quý khách đã mua hàng của UltraPhone</h5>
+     <h5 class="alert alert-primary">Đặt hàng thành công! Cảm ơn quý khách đã mua hàng của VirtualPhone</h5>
      <?php
         if (isset($bill) && is_array($bill)) {
             extract($bill);
